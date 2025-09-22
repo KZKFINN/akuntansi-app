@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akuntansi Pro</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <h1>📊 Akuntansi Pro</h1>
+    </header>
+    <main class="main-content">
+      <section id="dashboard">
+        <h2>Saldo Kas</h2>
+        <p id="saldo-kas">Rp 0</p>
+      </section>
+
+      <section id="transactions">
+        <h2>Transaksi</h2>
+        <form id="transaction-form">
+          <select id="transaction-type">
+            <option value="pemasukan">Pemasukan</option>
+            <option value="pengeluaran">Pengeluaran</option>
+          </select>
+          <input type="text" id="transaction-category" placeholder="Kategori" required />
+          <input type="number" id="transaction-amount" placeholder="Jumlah" required />
+          <input type="text" id="transaction-description" placeholder="Deskripsi" />
+          <button type="submit">Tambah</button>
+        </form>
+        <div id="transactions-list"></div>
+      </section>
+
+      <section id="piutang">
+        <h2>Piutang</h2>
+        <button onclick="showAddPiutang()">+ Tambah Piutang</button>
+        <div id="piutang-form" style="display:none;">
+          <form id="add-piutang-form">
+            <input type="text" id="piutang-name" placeholder="Nama" required />
+            <input type="number" id="piutang-amount" placeholder="Jumlah" required />
+            <input type="text" id="piutang-desc" placeholder="Deskripsi" />
+            <button type="submit">Simpan</button>
+            <button type="button" onclick="hideAddPiutang()">Batal</button>
+          </form>
+        </div>
+        <div id="piutang-list"></div>
+      </section>
+
+      <section id="hutang">
+        <h2>Hutang</h2>
+        <button onclick="showAddHutang()">+ Tambah Hutang</button>
+        <div id="hutang-form" style="display:none;">
+          <form id="add-hutang-form">
+            <input type="text" id="hutang-name" placeholder="Nama" required />
+            <input type="number" id="hutang-amount" placeholder="Jumlah" required />
+            <input type="text" id="hutang-desc" placeholder="Deskripsi" />
+            <button type="submit">Simpan</button>
+            <button type="button" onclick="hideAddHutang()">Batal</button>
+          </form>
+        </div>
+        <div id="hutang-list"></div>
+      </section>
+
+      <section id="reports">
+        <h2>Laporan</h2>
+        <p>Pendapatan: <span id="total-income">Rp 0</span></p>
+        <p>Pengeluaran: <span id="total-expense">Rp 0</span></p>
+        <p>Laba/Rugi: <span id="profit-loss">Rp 0</span></p>
+        <p>Total Piutang: <span id="total-piutang">Rp 0</span></p>
+        <p>Total Hutang: <span id="total-hutang">Rp 0</span></p>
+        <button onclick="exportData()">Backup Data</button>
+      </section>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
